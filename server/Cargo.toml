@@ -1,0 +1,15 @@
+[package]
+name = "chat-server"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+chat-modrpc = { path = "../chat-modrpc/rust" }
+env_logger = "0.11"
+localq = "0.0"
+log = "0.4"
+modrpc = "0.0"
+modrpc-executor = { version = "0.0", features = ["tokio"] }
+modrpc-hub = "0.0"
+mproto = "0.2"
+std-modrpc = "0.0"

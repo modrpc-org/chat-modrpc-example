@@ -1,0 +1,23 @@
+[package]
+name = "modrpc-chat-web"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+dioxus = { version = "0.6", features = ["web"] }
+dioxus-logger = "0.5.1"
+modrpc-executor = { version = "0.0", features = ["dioxus"] }
+chat-modrpc = { path = "../chat-modrpc/rust" }
+modrpc = { version = "0.0", features = ["web-ws-transport"] }
+
+[profile]
+
+[profile.wasm-dev]
+inherits = "dev"
+opt-level = 1
+
+[profile.server-dev]
+inherits = "dev"
+
+[profile.android-dev]
+inherits = "dev"

@@ -1,0 +1,50 @@
+import std ".modrpc/std.modrpc"
+
+interface Chat @(Client, Server) {
+    objects {
+        register: std.Request<
+            RegisterRequest,
+            result<RegisterSuccess, RegisterError>,
+        > @(Client, Server),
+
+        send_message: std.Request<
+            SendMessageRequest,
+            result<SendMessageSuccess, SendMessageError>,
+        > @(Client, Server),
+    }
+
+    state {
+        users: [RegisteredUser],
+    }
+}
+
+struct RegisteredUser {
+    endpoint: u64,
+    alias: string,
+}
+
+struct RegisterRequest {
+    alias: string,
+}
+
+struct RegisterSuccess {
+}
+
+enum RegisterError {
+    Internal,
+    UserAlreadyExists,
+    ChatFull,
+}
+
+struct SendMessageRequest {
+    content: string,
+}
+
+struct SendMessageSuccess {
+}
+
+enum SendMessageError {
+    Internal,
+    NotRegistered,
+    MessageTooLong,
+}
