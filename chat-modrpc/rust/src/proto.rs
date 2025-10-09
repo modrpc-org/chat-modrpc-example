@@ -59,8 +59,11 @@ impl<'a> Lazy<'a> for RegisteredUserLazy<'a> {
     type Owned = RegisteredUser;
 }
 
+impl<'a> Compatible<RegisteredUserLazy<'a>> for RegisteredUserLazy<'a> { }
 #[cfg(any(feature = "std", feature = "alloc"))]
 impl<'a> Compatible<RegisteredUserLazy<'a>> for RegisteredUser { }
+#[cfg(any(feature = "std", feature = "alloc"))]
+impl Compatible<RegisteredUser> for RegisteredUser { }
 #[cfg(any(feature = "std", feature = "alloc"))]
 impl<'a> Compatible<RegisteredUser> for RegisteredUserLazy<'a> { }
 
@@ -224,8 +227,11 @@ impl<'a> Lazy<'a> for RegisterRequestLazy<'a> {
     type Owned = RegisterRequest;
 }
 
+impl<'a> Compatible<RegisterRequestLazy<'a>> for RegisterRequestLazy<'a> { }
 #[cfg(any(feature = "std", feature = "alloc"))]
 impl<'a> Compatible<RegisterRequestLazy<'a>> for RegisterRequest { }
+#[cfg(any(feature = "std", feature = "alloc"))]
+impl Compatible<RegisterRequest> for RegisterRequest { }
 #[cfg(any(feature = "std", feature = "alloc"))]
 impl<'a> Compatible<RegisterRequest> for RegisterRequestLazy<'a> { }
 
@@ -360,7 +366,9 @@ impl<'a> Lazy<'a> for RegisterSuccessLazy<'a> {
     type Owned = RegisterSuccess;
 }
 
+impl<'a> Compatible<RegisterSuccessLazy<'a>> for RegisterSuccessLazy<'a> { }
 impl<'a> Compatible<RegisterSuccessLazy<'a>> for RegisterSuccess { }
+impl Compatible<RegisterSuccess> for RegisterSuccess { }
 impl<'a> Compatible<RegisterSuccess> for RegisterSuccessLazy<'a> { }
 
 impl<'a> RegisterSuccessLazy<'a> {}
@@ -454,8 +462,10 @@ pub enum RegisterErrorLazy {
     ChatFull,
 }
 
+impl Compatible<RegisterErrorLazy> for RegisterErrorLazy { }
 impl Compatible<RegisterErrorLazy> for RegisterError { }
 impl Compatible<RegisterError> for RegisterErrorLazy { }
+impl Compatible<RegisterError> for RegisterError { }
 
 impl Owned for RegisterError {
     type Lazy<'a> = RegisterErrorLazy;
@@ -661,8 +671,11 @@ impl<'a> Lazy<'a> for SendMessageRequestLazy<'a> {
     type Owned = SendMessageRequest;
 }
 
+impl<'a> Compatible<SendMessageRequestLazy<'a>> for SendMessageRequestLazy<'a> { }
 #[cfg(any(feature = "std", feature = "alloc"))]
 impl<'a> Compatible<SendMessageRequestLazy<'a>> for SendMessageRequest { }
+#[cfg(any(feature = "std", feature = "alloc"))]
+impl Compatible<SendMessageRequest> for SendMessageRequest { }
 #[cfg(any(feature = "std", feature = "alloc"))]
 impl<'a> Compatible<SendMessageRequest> for SendMessageRequestLazy<'a> { }
 
@@ -797,7 +810,9 @@ impl<'a> Lazy<'a> for SendMessageSuccessLazy<'a> {
     type Owned = SendMessageSuccess;
 }
 
+impl<'a> Compatible<SendMessageSuccessLazy<'a>> for SendMessageSuccessLazy<'a> { }
 impl<'a> Compatible<SendMessageSuccessLazy<'a>> for SendMessageSuccess { }
+impl Compatible<SendMessageSuccess> for SendMessageSuccess { }
 impl<'a> Compatible<SendMessageSuccess> for SendMessageSuccessLazy<'a> { }
 
 impl<'a> SendMessageSuccessLazy<'a> {}
@@ -891,8 +906,10 @@ pub enum SendMessageErrorLazy {
     MessageTooLong,
 }
 
+impl Compatible<SendMessageErrorLazy> for SendMessageErrorLazy { }
 impl Compatible<SendMessageErrorLazy> for SendMessageError { }
 impl Compatible<SendMessageError> for SendMessageErrorLazy { }
+impl Compatible<SendMessageError> for SendMessageError { }
 
 impl Owned for SendMessageError {
     type Lazy<'a> = SendMessageErrorLazy;
@@ -1098,8 +1115,11 @@ impl<'a> Lazy<'a> for ChatInitStateLazy<'a> {
     type Owned = ChatInitState;
 }
 
+impl<'a> Compatible<ChatInitStateLazy<'a>> for ChatInitStateLazy<'a> { }
 #[cfg(any(feature = "std", feature = "alloc"))]
 impl<'a> Compatible<ChatInitStateLazy<'a>> for ChatInitState { }
+#[cfg(any(feature = "std", feature = "alloc"))]
+impl Compatible<ChatInitState> for ChatInitState { }
 #[cfg(any(feature = "std", feature = "alloc"))]
 impl<'a> Compatible<ChatInitState> for ChatInitStateLazy<'a> { }
 
@@ -1234,7 +1254,9 @@ impl<'a> Lazy<'a> for ChatClientConfigLazy<'a> {
     type Owned = ChatClientConfig;
 }
 
+impl<'a> Compatible<ChatClientConfigLazy<'a>> for ChatClientConfigLazy<'a> { }
 impl<'a> Compatible<ChatClientConfigLazy<'a>> for ChatClientConfig { }
+impl Compatible<ChatClientConfig> for ChatClientConfig { }
 impl<'a> Compatible<ChatClientConfig> for ChatClientConfigLazy<'a> { }
 
 impl<'a> ChatClientConfigLazy<'a> {}
@@ -1351,7 +1373,9 @@ impl<'a> Lazy<'a> for ChatServerConfigLazy<'a> {
     type Owned = ChatServerConfig;
 }
 
+impl<'a> Compatible<ChatServerConfigLazy<'a>> for ChatServerConfigLazy<'a> { }
 impl<'a> Compatible<ChatServerConfigLazy<'a>> for ChatServerConfig { }
+impl Compatible<ChatServerConfig> for ChatServerConfig { }
 impl<'a> Compatible<ChatServerConfig> for ChatServerConfigLazy<'a> { }
 
 impl<'a> ChatServerConfigLazy<'a> {}
